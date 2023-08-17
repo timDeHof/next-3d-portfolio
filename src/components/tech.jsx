@@ -5,6 +5,7 @@ import { styles } from "@styles/styles";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import Image from "next/image";
 
 const TechnologiesCard = ({ index, heading, subHeading, tech }) => {
   return (
@@ -26,7 +27,7 @@ const TechnologiesCard = ({ index, heading, subHeading, tech }) => {
               <div
                 key={`technology-${item.name}`}
                 className='flex flex-row gap-4'>
-                <img
+                <Image
                   src={item.icon}
                   alt={item.name}
                   title={item.name}
@@ -69,5 +70,5 @@ const Tech = () => {
     </>
   );
 };
-
-export default SectionWrapper(Tech, "");
+export default Tech;
+// export default SectionWrapper(Tech, "");

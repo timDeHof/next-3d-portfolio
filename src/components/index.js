@@ -5,5 +5,15 @@ import {
   StarsCanvas,
 } from "./canvas";
 import Navbar from "./Navbar";
+import Feedbacks from "./feedbacks";
+import Tech from "./tech";
 
-export { Navbar, EarthCanvas, BallCanvas, ComputersCanvas, StarsCanvas };
+export {
+  Navbar,
+  Feedbacks,
+  Tech,
+  EarthCanvas,
+  BallCanvas,
+  ComputersCanvas,
+  StarsCanvas,
+};
