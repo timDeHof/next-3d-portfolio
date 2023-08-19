@@ -5,6 +5,8 @@ import frontend from "./frontend.png";
 import web from "./web.png";
 import link from "./globe.png";
 import github from "./github.png";
+import devto from "./devto.svg";
+import linkedin from "./linkedin.svg";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -50,6 +52,8 @@ export {
   web,
   link,
   github,
+  devto,
+  linkedin,
   menu,
   close,
   css,

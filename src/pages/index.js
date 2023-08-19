@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import Head from "next/head";
 import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles/styles";
 import { ComputersCanvas } from "../components/canvas";
+import { SocialIcons } from "@/components";
 export default function Home() {
   return (
     <div
@@ -29,7 +29,7 @@ export default function Home() {
             <div className='w-1 h-40 violet-gradient sm:h-80' />
           </div>
           <div>
-            <h1 className={`${styles.heroHeadText} text-white`}>
+            <h1 className={`${styles.heroHeadText} text-white-100`}>
               Hi, I&apos;m <span className='text-[#915eff]'>Tim</span>
             </h1>
             <p className={`${styles.heroSubText}  mt-2 text-white-100`}>

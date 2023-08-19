@@ -7,8 +7,12 @@ import {
 import Navbar from "./Navbar";
 import Feedbacks from "./feedbacks";
 import Tech from "./tech";
+import SocialIcons from "./socialIcons";
+import footer from "./footer";
 
 export {
+  SocialIcons,
+  footer,
   Navbar,
   Feedbacks,
   Tech,

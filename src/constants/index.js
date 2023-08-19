@@ -35,6 +35,9 @@ import {
   tripguide,
   threejs,
   moviewatchlist,
+  github,
+  devto,
+  linkedin,
 } from "../assets";
 
 export const navLinks = [
@@ -59,7 +62,30 @@ export const navLinks = [
     title: "Contact",
   },
 ];
+const socials = [
+  {
+    title: "devto",
+    Icon: devto,
+    href: "https://dev.to/timdehof",
+  },
+  {
+    title: "github",
+    Icon: github,
+    href: "https://github.com/timDeHof",
+  },
+  {
+    title: "linkedin",
+    Icon: linkedin,
+    href: "https://www.linkedin.com/in/timothy-dehof/",
+  },
+];
 
+const citation = [
+  {
+    content: "Practice even what seems impossible.",
+    author: "Marcus Aurelius",
+  },
+];
 const services = [
   {
     title: "Web Developer",
@@ -332,4 +358,12 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export {
+  services,
+  socials,
+  citation,
+  technologies,
+  experiences,
+  testimonials,
+  projects,
+};
