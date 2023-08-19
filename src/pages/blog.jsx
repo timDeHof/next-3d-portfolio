@@ -32,9 +32,8 @@ const BlogPostCard = ({
                 src={coverImage}
                 alt={title}
                 title={title}
-                width={0}
-                height={0}
-                layout='responsive'
+                width={360}
+                height={202.5}
                 className='object-cover w-full h-auto rounded-2xl'
               />
             )}
@@ -103,7 +102,7 @@ export async function getStaticProps() {
       notFound: {},
     };
   }
-  articles = JSON.parse(JSON.stringify(articles));
+
   return {
     props: { articles },
   };
