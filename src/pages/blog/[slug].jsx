@@ -8,7 +8,6 @@ import Image from "next/image";
 const cacheFile = ".dev-to-cache.json";
 
 export default function Page({ article, publishedDate }) {
-  console.log("article", article);
   return (
     <>
       {article.coverImage && (
@@ -16,9 +15,9 @@ export default function Page({ article, publishedDate }) {
           src={article.coverImage}
           alt={`cover of ${article.title}`}
           title={article.title}
-          width={0}
-          height={0}
-          layout='responsive'
+          width={360}
+          height={202.5}
+          quality={100}
           className='object-cover w-full h-auto rounded-2xl'
         />
       )}
@@ -37,7 +36,7 @@ export default function Page({ article, publishedDate }) {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  // console.log("slug from params", slug);
+
   const cacheContents = fs.readFileSync(
     path.join(process.cwd(), cacheFile),
     "utf-8",
