@@ -35,6 +35,9 @@ import {
   tripguide,
   threejs,
   moviewatchlist,
+  github,
+  devto,
+  linkedin,
 } from "../assets";
 
 export const navLinks = [
@@ -57,6 +60,23 @@ export const navLinks = [
   {
     id: "contact",
     title: "Contact",
+  },
+];
+const socials = [
+  {
+    title: "devto",
+    Icon: devto,
+    href: "https://dev.to/timdehof",
+  },
+  {
+    title: "github",
+    Icon: github,
+    href: "https://github.com/timDeHof",
+  },
+  {
+    title: "linkedin",
+    Icon: linkedin,
+    href: "https://www.linkedin.com/in/timothy-dehof/",
   },
 ];
 
@@ -340,6 +360,7 @@ const projects = [
 
 export {
   services,
+  socials,
   citation,
   technologies,
   experiences,
