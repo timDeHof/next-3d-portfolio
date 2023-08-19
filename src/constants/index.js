@@ -60,6 +60,12 @@ export const navLinks = [
   },
 ];
 
+const citation = [
+  {
+    content: "Practice even what seems impossible.",
+    author: "Marcus Aurelius",
+  },
+];
 const services = [
   {
     title: "Web Developer",
@@ -332,4 +338,11 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export {
+  services,
+  citation,
+  technologies,
+  experiences,
+  testimonials,
+  projects,
+};
