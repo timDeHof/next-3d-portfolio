@@ -11,7 +11,6 @@ import SocialIcons from "./socialIcons";
 import footer from "./footer";
 
 export {
-  NoScrollLink,
   SocialIcons,
   footer,
   Navbar,
