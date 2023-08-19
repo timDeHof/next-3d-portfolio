@@ -12,32 +12,37 @@ export const convertCanonicalURLToRelative = (canonical) => {
     : canonical.replace(blogURL, "");
 };
 
-const convertDevtoResponseToArticle = (data) => {
-  const slug = convertCanonicalURLToRelative(data.canonical_url);
-  const markdown = sanitizeDevToMarkdown(data.body_markdown);
-  const html = convertMarkdownToHtml(markdown);
+const convertDevtoResponseToArticle = async (data) => {
+  try {
+    const slug = convertCanonicalURLToRelative(data.canonical_url);
+    const markdown = sanitizeDevToMarkdown(data.body_markdown);
+    const html = await convertMarkdownToHtml(markdown);
 
-  const article = {
-    id: data.id,
-    title: data.title,
-    description: data.description,
-    publishedAt: data.published_at,
-    devToSlug: data.slug,
-    devToPath: data.path,
-    devToURL: data.url,
-    commentsCount: data.comments_count,
-    publicReactionsCount: data.public_reactions_count,
-    positiveReactionsCount: data.positive_reactions_count,
-    coverImage: data.cover_image,
-    tags: data.tag_list,
-    canonical: data.canonical_url,
-    collectionId: data.collection_id || -1,
-    slug,
-    markdown,
-    html,
-  };
+    const article = {
+      id: data.id,
+      title: data.title,
+      description: data.description,
+      publishedAt: data.published_at,
+      slug: data.slug,
+      path: data.path,
+      url: data.url,
+      commentsCount: data.comments_count,
+      publicReactionsCount: data.public_reactions_count,
+      positiveReactionsCount: data.positive_reactions_count,
+      coverImage: data.cover_image,
+      tags: data.tag_list,
+      canonical: data.canonical_url,
+      collectionId: data.collection_id || -1,
+      slug,
+      markdown,
+      html,
+    };
 
-  return article;
+    return article;
+  } catch (error) {
+    console.error("Error converting Dev.to response to article: ", error);
+    console.error("Problematic data:", data);
+  }
 };
 
 const blogFilter = ({ canonical }) => {
@@ -51,9 +56,17 @@ export const getAllArticles = async () => {
     params,
     headers,
   });
-
-  const articles = data.map(convertDevtoResponseToArticle);
-  return articles;
+  try {
+    const articles = await Promise.all(
+      data.map(async (articleData) => {
+        return await convertDevtoResponseToArticle(articleData);
+      }),
+    );
+    return articles;
+  } catch (error) {
+    console.error("Error processing articles:", error);
+    return [];
+  }
 };
 
 export const getAllBlogArticles = async () => {

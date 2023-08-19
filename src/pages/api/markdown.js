@@ -29,5 +29,5 @@ export const convertMarkdownToHtml = async (markdown) => {
     .process(content);
   const html = await htmlPromise;
 
-  return html;
+  return String(html);
 };
