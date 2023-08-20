@@ -25,7 +25,7 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import express from "./tech/express.svg";
 import cypress from "./tech/cypress.svg";
-import next from "./tech/nextjs.svg";
+import nextjs from "./tech/nextjs.svg";
 import appwrite from "./tech/appwrite.svg";
 import storybook from "./tech/storybook.svg";
 import jest from "./tech/jest.svg";
@@ -71,7 +71,7 @@ export {
   threejs,
   cypress,
   express,
-  next,
+  nextjs,
   storybook,
   appwrite,
   jest,
