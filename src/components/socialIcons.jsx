@@ -9,14 +9,14 @@ const socials = [
     Icon: FaDev,
     href: "https://dev.to/timdehof",
     className:
-      "text-gray-900 bg-gray-50 hover:bg-gray-900 hover:text-gray-50 text-md rounded-md p-0.5",
+      "text-gray-50 dark:text-gray-900 bg-gray-900 dark:bg-gray-50 hover:bg-gray-500 hover:text-gray-100 text-md rounded-md p-1",
   },
   {
     title: "github",
     Icon: FaGithub,
     href: "https://github.com/timDeHof",
     className:
-      "text-gray-50 hover:text-gray-900 hover:bg-gray-50 bg-gray-900 p-1 text-md rounded-md",
+      "text-gray-50 hover:text-gray-100 hover:bg-gray-500 bg-gray-900 p-1 text-md rounded-md",
   },
   {
     title: "linkedin",

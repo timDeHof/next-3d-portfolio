@@ -21,12 +21,12 @@ const TechnologiesCard = ({ index, heading, subHeading, tech }) => {
             {subHeading}
           </p>
         </div>
-        <div className='grid items-center grid-cols-2 px-8 mt-5 gap-x-5 gap-y-2'>
+        <div className='grid items-center grid-cols-2 px-8 mx-auto mt-5 gap-x-5 gap-y-2'>
           {tech.map((item, index) => {
             return (
               <div
                 key={`technology-${item.name}`}
-                className='flex flex-row gap-4'>
+                className='flex flex-row gap-4 text-secondary'>
                 <Image
                   src={item.icon}
                   alt={item.name}
@@ -58,7 +58,7 @@ const Tech = () => {
         </h2>
       </motion.div>
 
-      <div className='flex flex-wrap mt-10 gap-7'>
+      <div className='flex flex-wrap justify-center mt-10 gap-7'>
         {technologies.map((technology, index) => (
           <TechnologiesCard
             key={technology.heading}
