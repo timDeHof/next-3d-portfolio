@@ -9,6 +9,7 @@ import Feedbacks from "./feedbacks";
 import Tech from "./tech";
 import SocialIcons from "./socialIcons";
 import footer from "./footer";
+import PageTitle from "./pageTitle";
 
 export {
   SocialIcons,
@@ -20,4 +21,5 @@ export {
   BallCanvas,
   ComputersCanvas,
   StarsCanvas,
+  PageTitle,
 };

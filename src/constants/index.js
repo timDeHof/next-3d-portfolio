@@ -17,7 +17,7 @@ import {
   figma,
   docker,
   express,
-  next,
+  nextjs,
   storybook,
   cypress,
   meta,
@@ -112,7 +112,7 @@ const technologies = [
     tech: [
       {
         name: "Next JS",
-        icon: next,
+        icon: nextjs,
       },
       {
         name: "React JS",

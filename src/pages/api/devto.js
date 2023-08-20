@@ -3,21 +3,23 @@ import axios from "axios";
 import { convertMarkdownToHtml, sanitizeDevToMarkdown } from "./markdown";
 
 const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME;
-const blogURL = "https://blog.timdehof.dev";
-const portfolioURL = "https://timdehof.dev/";
+const blogURL = "https://blog.timdehof.dev/";
 // Takes a URL and returns the relative slug to your website
 export const convertCanonicalURLToRelative = (canonical) => {
-  return canonical.startsWith(portfolioURL)
-    ? canonical.replace(portfolioURL, "")
-    : canonical.replace(blogURL, "");
+  return canonical.replace(blogURL, "");
 };
-
+/* Takes the data for an article returned by the Dev.to API and:
+/*  * Parses it into the IArticle interface
+/*  * Converts the full canonical URL into a relative slug to be used in getStaticPaths
+/*  * Converts the supplied markdown into HTML (it does a little sanitising as Dev.to allows markdown headers (##) with out a trailing space
+*/
 const convertDevtoResponseToArticle = async (data) => {
   try {
     const slug = convertCanonicalURLToRelative(data.canonical_url);
     const markdown = sanitizeDevToMarkdown(data.body_markdown);
     const html = await convertMarkdownToHtml(markdown);
 
+    // parse into article object
     const article = {
       id: data.id,
       title: data.title,
@@ -44,7 +46,7 @@ const convertDevtoResponseToArticle = async (data) => {
     console.error("Problematic data:", data);
   }
 };
-
+// Filters out any articles that are not meant for the blog page
 const blogFilter = ({ canonical }) => {
   return canonical && canonical.startsWith(blogURL);
 };
@@ -73,7 +75,7 @@ export const getAllBlogArticles = async () => {
   const articles = await getAllArticles();
   return articles.filter(blogFilter);
 };
-export const getArticleFromCache = (cache, slug) => {
+export const getArticleFromCache = async (cache, slug) => {
   const article = cache.find((cachedArticle) => cachedArticle.slug === slug);
   return article;
 };

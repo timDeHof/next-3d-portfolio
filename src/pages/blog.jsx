@@ -1,7 +1,6 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import Tilt from "react-parallax-tilt";
-import Head from "next/head";
 import { styles } from "../styles/styles";
 import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 import { motion } from "framer-motion";
@@ -25,7 +24,7 @@ const BlogPostCard = ({
       <Tilt
         options={{ max: 45, scale: 1, speed: 450 }}
         className='w-full p-5 rounded-2xl bg-tertiary sm:w-[360px]'>
-        <Link href={`/blog${convertCanonicalURLToRelative(canonical)}`}>
+        <Link href={`/blog/${convertCanonicalURLToRelative(canonical)}`}>
           <div className='h-[230px] w-full flex'>
             {coverImage && (
               <Image
@@ -57,15 +56,6 @@ const BlogPostCard = ({
 const Blog = ({ articles }) => {
   return (
     <>
-      <Head>
-        <meta charset='UTF-8' />
-        <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <meta name='theme-color' content='#000' />
-        <link rel='canonical' href='/blog' />
-        <title>Tim DeHof: Blog</title>
-        <meta name='description' content='checkout my latest blog posts.' />
-      </Head>
       <motion.section
         variants={staggerContainer()}
         initial='hidden'
