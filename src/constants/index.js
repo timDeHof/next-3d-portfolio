@@ -13,6 +13,8 @@ import {
   tailwind,
   nodejs,
   mongodb,
+  postgres,
+  firebase,
   git,
   figma,
   docker,
@@ -168,6 +170,14 @@ const technologies = [
       {
         name: "Appwrite.io",
         icon: appwrite,
+      },
+      {
+        name: "postgreSql",
+        icon: postgres,
+      },
+      {
+        name: "firebase",
+        icon: firebase,
       },
     ],
   },
