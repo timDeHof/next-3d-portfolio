@@ -5,9 +5,6 @@ import { styles } from "../styles/styles";
 import { Layout } from "../components/layout";
 import { ComputersCanvas } from "../components/canvas";
 import { SocialIcons } from "@/components";
-const title = "Tim DeHof: Fullstack Developer & Designer Portfolio";
-const subtitle =
-  "Explore Tim DeHof's developer portfolio. Discover dynamic web designs and innovative projects that bring ideas to life.";
 
 export default function Home() {
   return (
