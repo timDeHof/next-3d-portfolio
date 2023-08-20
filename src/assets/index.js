@@ -28,6 +28,8 @@ import cypress from "./tech/cypress.svg";
 import nextjs from "./tech/nextjs.svg";
 import appwrite from "./tech/appwrite.svg";
 import storybook from "./tech/storybook.svg";
+import postgres from "./tech/postgresql.svg";
+import firebase from "./tech/firebase.svg";
 import jest from "./tech/jest.svg";
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -58,6 +60,8 @@ export {
   close,
   css,
   docker,
+  postgres,
+  firebase,
   figma,
   git,
   html,
