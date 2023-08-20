@@ -8,12 +8,12 @@ import Navbar from "./Navbar";
 import Feedbacks from "./feedbacks";
 import Tech from "./tech";
 import SocialIcons from "./socialIcons";
-import footer from "./footer";
+import Footer from "./footer";
 import PageTitle from "./pageTitle";
 
 export {
   SocialIcons,
-  footer,
+  Footer,
   Navbar,
   Feedbacks,
   Tech,
