@@ -19,7 +19,7 @@ const Stars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color='#FFFFFF'
+          color='#F3F3F3'
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}

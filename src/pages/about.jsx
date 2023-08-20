@@ -47,7 +47,9 @@ const AboutPage = () => {
       </Head>
 
       <motion.div variants={textVariant()} className='gap-10'>
-        <h1 className={`${styles.sectionSubText} text-center`}>Introduction</h1>
+        <h1 className={`${styles.sectionSubText} text-center `}>
+          Introduction
+        </h1>
         <h2 className={`${styles.sectionHeadText} text-center`}>Overview.</h2>
       </motion.div>
       <motion.p

@@ -3,7 +3,7 @@ import SocialIcons from "./socialIcons";
 import Link from "next/link";
 const Footer = () => {
   return (
-    <footer className='flex flex-col items-center w-full'>
+    <footer className='flex flex-col items-center justify-center w-full pt-10'>
       <p className='text-sm text-gray-500 transition-colors dark:text-gray-300 '>
         lets connect here
       </p>

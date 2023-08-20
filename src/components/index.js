@@ -8,14 +8,16 @@ import Navbar from "./Navbar";
 import Feedbacks from "./feedbacks";
 import Tech from "./tech";
 import SocialIcons from "./socialIcons";
-import footer from "./footer";
+import Footer from "./footer";
 import PageTitle from "./pageTitle";
+import Layout from "./layout";
 
 export {
   SocialIcons,
-  footer,
+  Footer,
   Navbar,
   Feedbacks,
+  Layout,
   Tech,
   EarthCanvas,
   BallCanvas,
