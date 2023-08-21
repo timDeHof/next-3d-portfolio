@@ -33,7 +33,6 @@ export const convertMarkdownToHtml = async (markdown) => {
       .use(rehypeHighlight) // Add code highlighting
       .use(remarkHtml) // Convert to HTML
       .process(stripHtmlComments(content));
-    console.log("Processed html:", html.toString());
     return html.toString();
   } catch (error) {
     console.error("Error converting markdown to HTML:", error);
