@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-
+import Head from "next/head";
 import { styles } from "../styles/styles";
 import { EarthCanvas } from "../components/canvas";
 import { StarWrapper } from "../hoc";
@@ -67,11 +67,20 @@ const Contact = () => {
   return (
     <div
       className={`flex flex-col-reverse gap-10 overflow-hidden xl:mt-12 xl:flex-row`}>
+      <Head>
+        <meta charset='UTF-8' />
+        <link rel='icon' type='image/svg+xml' href='/logo.svg' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='theme-color' content='#000' />
+        <link rel='canonical' href='/contact' />
+        <title>Tim DeHof: Contact</title>
+        <meta name='description' content='contact me.' />
+      </Head>
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] rounded-2xl bg-black-100 p-8'>
         <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <h1 className={styles.sectionHeadText}>Contact.</h1>
 
         <form
           ref={formRef}

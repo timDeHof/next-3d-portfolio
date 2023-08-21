@@ -5,7 +5,8 @@ import { styles } from "../styles/styles";
 import { Layout } from "../components/layout";
 import { ComputersCanvas } from "../components/canvas";
 import { SocialIcons } from "@/components";
-
+import { getServerSideSitemap } from "next-sitemap";
+import { GetServerSideProps } from "next";
 export default function Home() {
   return (
     <div
