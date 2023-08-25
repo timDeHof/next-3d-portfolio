@@ -31,18 +31,13 @@ import storybook from "./tech/storybook.svg";
 import postgres from "./tech/postgresql.svg";
 import firebase from "./tech/firebase.svg";
 import jest from "./tech/jest.svg";
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+
 import unf from "./company/unf.svg";
 import polyhistor from "./company/polyhistor.png";
 import fullstack from "./company/fullstack.png";
 
-import carrent from "./carrent.png";
 import galacticpawn from "./galacticpawn.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+
 import smartbrain from "./smartbrain.jpg";
 import moviewatchlist from "./moviewatchlist.jpg";
 
@@ -79,17 +74,10 @@ export {
   storybook,
   appwrite,
   jest,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
   unf,
   polyhistor,
   fullstack,
   galacticpawn,
   smartbrain,
-  carrent,
-  jobit,
-  tripguide,
   moviewatchlist,
 };

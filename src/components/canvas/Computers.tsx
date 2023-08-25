@@ -4,7 +4,11 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-const Computers = ({ isMobile }) => {
+type ComputersProps = {
+  isMobile: boolean;
+};
+
+function Computers({ isMobile }: ComputersProps) {
   const computer = useGLTF("./desktop_pc/scene.gltf");
   const scale = useMemo(() => (isMobile ? 0.7 : 0.75), [isMobile]);
   const position = useMemo(
@@ -14,7 +18,7 @@ const Computers = ({ isMobile }) => {
 
   return (
     <mesh>
-      <hemisphereLight skyColor="white" intensity={2.3} groundColor="black" />
+      <hemisphereLight color="white" intensity={2.3} groundColor="black" />
 
       <spotLight
         position={[-20, 50, 10]}
@@ -22,7 +26,8 @@ const Computers = ({ isMobile }) => {
         penumbra={1}
         intensity={1}
         castShadow
-        shadowMapSize={1024}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
       />
       <pointLight intensity={1} />
       <primitive
@@ -33,16 +38,15 @@ const Computers = ({ isMobile }) => {
       />
     </mesh>
   );
-};
+}
 
-const ComputersCanvas = () => {
+function ComputersCanvas() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 500px)");
     setIsMobile(mediaQuery.matches);
-
-    const handleMediaQueryChange = (event) => {
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
     };
 
@@ -71,6 +75,6 @@ const ComputersCanvas = () => {
       <Preload all />
     </Canvas>
   );
-};
+}
 
 export default ComputersCanvas;
