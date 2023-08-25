@@ -1,10 +1,11 @@
 import React from "react";
 import { Html, useProgress } from "@react-three/drei";
-const Loader = () => {
+
+function Loader() {
   const { progress } = useProgress();
   return (
     <Html>
-      <span className="Canvas-load"></span>
+      <span className="Canvas-load" />
       <p
         style={{
           fontSize: 14,
@@ -17,6 +18,6 @@ const Loader = () => {
       </p>
     </Html>
   );
-};
+}
 
 export default Loader;

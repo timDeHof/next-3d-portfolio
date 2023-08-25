@@ -1,13 +1,11 @@
-import { notFound } from "next/navigation";
 import axios from "axios";
 import { convertMarkdownToHtml, sanitizeDevToMarkdown } from "./markdown";
 
 const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME;
 const blogURL = "https://blog.timdehof.dev/";
 // Takes a URL and returns the relative slug to your website
-export const convertCanonicalURLToRelative = (canonical) => {
-  return canonical.replace(blogURL, "");
-};
+export const convertCanonicalURLToRelative = (canonical) =>
+  canonical.replace(blogURL, "");
 /* Takes the data for an article returned by the Dev.to API and:
 /*  * Parses it into the IArticle interface
 /*  * Converts the full canonical URL into a relative slug to be used in getStaticPaths
@@ -15,7 +13,7 @@ export const convertCanonicalURLToRelative = (canonical) => {
 */
 const convertDevtoResponseToArticle = async (data) => {
   try {
-    const slug = convertCanonicalURLToRelative(data.canonical_url);
+    let slug = convertCanonicalURLToRelative(data.canonical_url);
     const markdown = sanitizeDevToMarkdown(data.body_markdown);
     const html = await convertMarkdownToHtml(markdown);
 
@@ -25,7 +23,6 @@ const convertDevtoResponseToArticle = async (data) => {
       title: data.title,
       description: data.description,
       publishedAt: data.published_at,
-      slug: data.slug,
       path: data.path,
       url: data.url,
       commentsCount: data.comments_count,
@@ -47,9 +44,8 @@ const convertDevtoResponseToArticle = async (data) => {
   }
 };
 // Filters out any articles that are not meant for the blog page
-const blogFilter = ({ canonical }) => {
-  return canonical && canonical.startsWith(blogURL);
-};
+const blogFilter = ({ canonical }) =>
+  canonical && canonical.startsWith(blogURL);
 
 export const getAllArticles = async () => {
   const params = { username, per_page: 1000 };
@@ -60,9 +56,9 @@ export const getAllArticles = async () => {
   });
   try {
     const articles = await Promise.all(
-      data.map(async (articleData) => {
-        return await convertDevtoResponseToArticle(articleData);
-      }),
+      data.map(
+        async (articleData) => await convertDevtoResponseToArticle(articleData),
+      ),
     );
     return articles;
   } catch (error) {
