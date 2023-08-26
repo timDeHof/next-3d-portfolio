@@ -62,6 +62,7 @@ const Navbar = () => {
           <button
             type='button'
             role='button'
+            aria-label='dark mode button'
             tabIndex={0}
             className='bg-pink d-flex h-12 w-12 items-center justify-center rounded-md ring-blue-700 focus:outline-none focus:ring-2 dark:bg-gray-900'
             onClick={toggleTheme}
@@ -89,6 +90,7 @@ const Navbar = () => {
           <div className='ml-4 flex items-center'>
             <button
               className='bg-pink d-flex h-12 w-12 items-center justify-center rounded-md ring-blue-700 focus:outline-none focus:ring-2 dark:bg-gray-900'
+              aria-label='dark mode button'
               onClick={toggleTheme}
             >
               {mounted ? (
