@@ -44,7 +44,9 @@ const ComputersCanvas = () => {
       setIsMobile(event.matches);
     };
 
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    mediaQuery.addEventListener('change', handleMediaQueryChange, {
+      passive: true,
+    });
 
     return () => {
       mediaQuery.removeEventListener('change', handleMediaQueryChange);
