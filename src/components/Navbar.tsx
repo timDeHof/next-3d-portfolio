@@ -58,7 +58,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className='flex items-center'>
+        <div className='ml-1 hidden sm:flex sm:items-center'>
           <button
             type='button'
             role='button'
@@ -82,10 +82,11 @@ const Navbar = () => {
             title='menu'
             width={36}
             height={36}
+            loading='eager'
             className='h-[28px] w-[28px] cursor-pointer object-contain'
             onClick={() => setToggle(!toggle)}
           />
-          <div className='flex items-center'>
+          <div className='ml-4 flex items-center'>
             <button
               className='bg-pink d-flex h-12 w-12 items-center justify-center rounded-md ring-blue-700 focus:outline-none focus:ring-2 dark:bg-gray-900'
               onClick={toggleTheme}
