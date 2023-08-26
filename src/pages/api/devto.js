@@ -1,11 +1,11 @@
-import axios from "axios";
-import { convertMarkdownToHtml, sanitizeDevToMarkdown } from "./markdown";
+import axios from 'axios';
+import { convertMarkdownToHtml, sanitizeDevToMarkdown } from './markdown';
 
 const username = process.env.NEXT_PUBLIC_DEVTO_USERNAME;
-const blogURL = "https://blog.timdehof.dev/";
+const blogURL = 'https://blog.timdehof.dev/';
 // Takes a URL and returns the relative slug to your website
 export const convertCanonicalURLToRelative = (canonical) =>
-  canonical.replace(blogURL, "");
+  canonical.replace(blogURL, '');
 /* Takes the data for an article returned by the Dev.to API and:
 /*  * Parses it into the IArticle interface
 /*  * Converts the full canonical URL into a relative slug to be used in getStaticPaths
@@ -39,8 +39,8 @@ const convertDevtoResponseToArticle = async (data) => {
 
     return article;
   } catch (error) {
-    console.error("Error converting Dev.to response to article: ", error);
-    console.error("Problematic data:", data);
+    console.error('Error converting Dev.to response to article: ', error);
+    console.error('Problematic data:', data);
   }
 };
 // Filters out any articles that are not meant for the blog page
@@ -49,20 +49,20 @@ const blogFilter = ({ canonical }) =>
 
 export const getAllArticles = async () => {
   const params = { username, per_page: 1000 };
-  const headers = { "api-key": process.env.NEXT_PUBLIC_DEVTO_APIKEY };
-  const { data } = await axios.get("https://dev.to/api/articles/me", {
+  const headers = { 'api-key': process.env.NEXT_PUBLIC_DEVTO_APIKEY };
+  const { data } = await axios.get('https://dev.to/api/articles/me', {
     params,
     headers,
   });
   try {
     const articles = await Promise.all(
       data.map(
-        async (articleData) => await convertDevtoResponseToArticle(articleData),
-      ),
+        async (articleData) => await convertDevtoResponseToArticle(articleData)
+      )
     );
     return articles;
   } catch (error) {
-    console.error("Error processing articles:", error);
+    console.error('Error processing articles:', error);
     return [];
   }
 };
