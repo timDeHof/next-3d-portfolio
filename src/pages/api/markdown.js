@@ -1,23 +1,23 @@
-import { unified } from "unified";
-import parse from "remark-parse";
-import remarkHtml from "remark-html";
-import remarkRehype from "remark-rehype";
-import rehypeHighlight from "rehype-highlight/lib";
-import gfm from "remark-gfm";
-import matter from "gray-matter";
-import stripHtmlComments from "strip-html-comments";
+import { unified } from 'unified';
+import parse from 'remark-parse';
+import remarkHtml from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeHighlight from 'rehype-highlight/lib';
+import gfm from 'remark-gfm';
+import matter from 'gray-matter';
+import stripHtmlComments from 'strip-html-comments';
 
 // Corrects some Markdown specific to Dev.to
 export const sanitizeDevToMarkdown = (markdown) => {
-  let correctedMarkdown = "";
+  let correctedMarkdown = '';
 
   // Dev.to sometimes turns "# header" into "#&nbsp;header"
-  const replaceSpaceCharRegex = new RegExp(String.fromCharCode(160), "g");
-  correctedMarkdown = markdown.replace(replaceSpaceCharRegex, " ");
+  const replaceSpaceCharRegex = new RegExp(String.fromCharCode(160), 'g');
+  correctedMarkdown = markdown.replace(replaceSpaceCharRegex, ' ');
 
   // Dev.to allows headers with no space after the hashtag (I don't use # on Dev.to due to the title)
   const addSpaceAfterHeaderHashtagRegex = /##(?=[a-z|A-Z])/g;
-  return correctedMarkdown.replace(addSpaceAfterHeaderHashtagRegex, "$& ");
+  return correctedMarkdown.replace(addSpaceAfterHeaderHashtagRegex, '$& ');
 };
 
 // Converts given markdown into HTML
@@ -34,7 +34,7 @@ export const convertMarkdownToHtml = async (markdown) => {
       .process(stripHtmlComments(content));
     return html.toString();
   } catch (error) {
-    console.error("Error converting markdown to HTML:", error);
+    console.error('Error converting markdown to HTML:', error);
     return null;
   }
 };

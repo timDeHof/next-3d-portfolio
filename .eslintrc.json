@@ -14,6 +14,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "extends": [
+    "next",
     "airbnb",
     "airbnb/hooks",
     "eslint:recommended",
@@ -51,6 +52,15 @@
     "prefer-const": "off",
     // needed because of https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use & https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined
     "no-use-before-define": "off",
+    "react/no-array-index-key": "off",
+    "react/no-danger": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     "@typescript-eslint/no-use-before-define": [
       "error",
       { "functions": false, "classes": false, "variables": true }
