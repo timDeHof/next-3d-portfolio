@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { PageTitle } from '@/components';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import DOMPurify from 'dompurify';
 import { getAllBlogArticles, getArticleFromCache } from '../api/devto';
 
 const cacheFile = '.dev-to-cache.json';
@@ -25,7 +24,7 @@ const ArticlePage = ({ article }) => (
     <section className='mt-10 flex w-full flex-col items-center font-light leading-relaxed'>
       <article
         className='prose lg:prose-lg w-full max-w-none text-white md:w-5/6 xl:w-9/12'
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.html) }}
+        dangerouslySetInnerHTML={{ __html: article.html }}
       />
     </section>
   </>
