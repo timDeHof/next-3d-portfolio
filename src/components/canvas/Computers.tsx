@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
-
+import { OrbitControls, Preload } from '@react-three/drei';
+import Model from './Computer';
 import CanvasLoader from '../Loader';
 
 type ComputersProps = {
@@ -9,7 +9,6 @@ type ComputersProps = {
 };
 
 const Computers = ({ isMobile }: ComputersProps) => {
-  const computer = useGLTF('./desktop_pc/scene.gltf');
   const scale = useMemo(() => (isMobile ? 0.7 : 0.75), [isMobile]);
   const position = useMemo(
     () => (isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]),
@@ -30,12 +29,7 @@ const Computers = ({ isMobile }: ComputersProps) => {
         shadow-mapSize-height={1024}
       />
       <pointLight intensity={1} />
-      <primitive
-        object={computer.scene}
-        scale={scale}
-        position={position}
-        rotation={[-0.01, -0.2, -0.1]}
-      />
+      <Model scale={scale} position={position} rotation={[-0.01, -0.2, -0.1]} />
     </mesh>
   );
 };
