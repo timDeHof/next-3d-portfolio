@@ -28,11 +28,7 @@
   "rules": {
     "no-console": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { "requireReturnForObjectLiteral": true }
-    ],
+    "arrow-body-style": "off",
     "react/no-unknown-property": "off",
     "consistent-return": "off",
     "no-return-await": "off",
