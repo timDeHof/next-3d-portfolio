@@ -11,9 +11,11 @@ import SocialIcons from './socialIcons';
 import Footer from './footer';
 import PageTitle from './pageTitle';
 import Layout from './layout';
+import ServiceCard from './serviceCard/ServiceCard';
 
 export {
   SocialIcons,
+  ServiceCard,
   Footer,
   Navbar,
   Feedbacks,
