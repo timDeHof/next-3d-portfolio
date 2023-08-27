@@ -1,6 +1,11 @@
 name: 3d-portfolio
 
 on:
+  push:
+    branches:
+      - main
+      - development
+
   pull_request:
     types: [opened, synchronize]
 
