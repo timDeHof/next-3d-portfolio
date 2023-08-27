@@ -3,8 +3,7 @@ import path from 'path';
 import React from 'react';
 import Image from 'next/image';
 import { PageTitle } from '@/components';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { getAllBlogArticles, getArticleFromCache } from '../api/devto';
+import { getArticleFromCache } from '../api/devto';
 
 const cacheFile = '.dev-to-cache.json';
 
@@ -30,7 +29,7 @@ const ArticlePage = ({ article }) => (
   </>
 );
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   // Read cache and parse to object
   let cacheContents;
   try {
@@ -47,28 +46,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch the article from the cache
   const article = await getArticleFromCache(cache, params.slug);
   return { props: { article } };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Get the published articles and cache them for use in getStaticProps().
-  const articles = await getAllBlogArticles();
-
-  // Save articles data to cache file
-  fs.writeFileSync(
-    path.join(process.cwd(), cacheFile),
-    JSON.stringify(articles)
-  );
-
-  // Get the paths we want to pre-render based on posts
-  const paths = articles.map(({ slug }) => {
-    return {
-      params: { slug },
-    };
-  });
-
-  // we'll pre-render only these paths at build time.
-  // {fallback: false} means other routes should 404.
-  return { paths, fallback: false };
 };
 
 export default ArticlePage;
