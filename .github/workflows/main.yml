@@ -29,5 +29,3 @@ jobs:
         run: npm run format:fix
       - name: Run eslint
         uses: npm run lint
-      # - name: Run eslint
-      #   uses: bradennapier/eslint-plus-action@v3.4.2
