@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { GetStaticProps, GetStaticPropsResult } from 'next';
+import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import Tilt from 'react-parallax-tilt';
 import {
   getAllBlogArticles,
@@ -96,8 +96,8 @@ const Blog = ({ articles }) => (
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<{ articles: BlogProps[] }>
+export const getServerSideProps: GetServerSideProps = async (): Promise<
+  GetServerSidePropsResult<{ articles: BlogProps[] }>
 > => {
   let articles = await getAllBlogArticles();
 
