@@ -9,7 +9,7 @@ const Home = () => (
   >
     <section className='relative mx-auto h-screen w-full bg-cover bg-center bg-no-repeat'>
       <div className='absolute inset-0 z-[-1]'>
-        <Image src={'/herobg.png'} fill quality={100} alt='Background Image' />
+        <Image src={'/herobg.png'} fill quality={80} alt='Background Image' />
       </div>
       <div
         className={`${styles.paddingX} absolute inset-0 top-[120px] mx-auto flex max-w-7xl flex-row items-start gap-5`}
