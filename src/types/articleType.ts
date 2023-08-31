@@ -15,7 +15,7 @@ interface ArticleProps {
   collectionId: number;
   slug: string;
   markdown: string;
-  html: string;
+  html?: string;
 }
 
 export default ArticleProps;

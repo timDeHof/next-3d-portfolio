@@ -13,10 +13,6 @@ import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 import { styles } from '../styles/styles';
 import ArticleProps from '../types/articleType';
 
-interface BlogProps {
-  articles: ArticleProps[];
-}
-
 const BlogPostCard = ({
   title,
   canonical,
@@ -46,7 +42,7 @@ const BlogPostCard = ({
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
           {tags.map((tag) => (
-            <p key={`${title}-${tag}`} className='text-[14px]'>
+            <p key={`${title}-${tag}`} className='text-[14px] text-white-100'>
               #{tag}
             </p>
           ))}
@@ -97,7 +93,7 @@ const Blog = ({ articles }) => (
 export default Blog;
 
 export const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<{ articles: BlogProps[] }>
+  GetServerSidePropsResult<{ articles: ArticleProps[] }>
 > => {
   let articles = await getAllBlogArticles();
 

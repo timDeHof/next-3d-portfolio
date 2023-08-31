@@ -432,6 +432,6 @@ const Model = (props) => {
   );
 };
 
-useGLTF.preload('/public/desktop_pc/scene-transformed.glb');
+useGLTF.preload('/desktop_pc/scene-transformed.glb');
 
 export default Model;

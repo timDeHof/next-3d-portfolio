@@ -5,13 +5,14 @@ import { staggerContainer } from '../utils/motion';
 
 interface SectionWrapperProps {
   [key: string]: string;
+  className: string;
 }
 
 const SectionWrapper = (
   Component: React.ComponentType<SectionWrapperProps>,
-  idName: string
+  sectionId: string
 ) => {
-  const HOC = (props: SectionWrapperProps) => (
+  const HOC = ({ className, ...props }: SectionWrapperProps) => (
     <motion.section
       variants={staggerContainer()}
       initial='hidden'
@@ -19,10 +20,10 @@ const SectionWrapper = (
       viewport={{ once: true, amount: 0.25 }}
       className={`${styles.padding} mx-auto flex max-w-7xl flex-col`}
     >
-      <span className='hash-span' id={idName}>
+      <span className='hash-span' id={sectionId}>
         &nbsp;
       </span>
-      <Component {...props} />
+      <Component className={''} {...props} />
     </motion.section>
   );
   return HOC;

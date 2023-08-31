@@ -21,10 +21,10 @@ const Navbar = () => {
     <nav
       className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center bg-primary py-5`}
     >
-      <div className='mx-auto flex w-full max-w-7xl items-center justify-between'>
+      <div className='flex w-full max-w-7xl items-center justify-between'>
         <Link
           href='/'
-          className='flex items-center gap-2'
+          className='flex items-center justify-center gap-2'
           onClick={() => {
             setActive('');
             window.scrollTo(0, 0);
@@ -37,7 +37,7 @@ const Navbar = () => {
             width={36}
             height={36}
             loading='eager'
-            className='h-9 w-9 object-contain'
+            className='object-fit h-12 w-12'
           />
           <p className='flex cursor-pointer text-[18px] font-bold text-white'>
             Tim DeHof &nbsp;
