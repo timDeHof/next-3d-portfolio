@@ -63,7 +63,6 @@ const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
         width={500}
         height={100}
         quality={100}
-        layout='responsive'
         className='mx-auto h-auto w-full'
       />
 
