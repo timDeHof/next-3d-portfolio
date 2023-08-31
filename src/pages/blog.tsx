@@ -21,7 +21,7 @@ const BlogPostCard = ({
   tags,
   index,
 }) => (
-  <motion.div variants={fadeIn('', 'Spring', index * 0.5, 0.75)}>
+  <motion.div variants={fadeIn('', 'spring', index * 0.5, 0.75)}>
     <Tilt className='w-full rounded-2xl bg-tertiary p-5 sm:w-[360px]'>
       <Link href={`/blog/${convertCanonicalURLToRelative(canonical)}`}>
         <div className='flex h-[230px] w-full'>

@@ -50,9 +50,7 @@ const customComponents: CustomComponents = {
   },
 };
 
-const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({
-  article,
-}) => {
+const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
   const { coverImage, title, markdown } = article;
   return (
     <>
@@ -80,9 +78,9 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({
     </>
   );
 };
+
 export const getServerSideProps = async ({ params }) => {
   // Read cache and parse to object
-
   try {
     const cacheContents = fs.readFileSync(
       path.join(process.cwd(), cacheFile),
@@ -95,7 +93,6 @@ export const getServerSideProps = async ({ params }) => {
     console.error('Error reading cache file:', error);
     return { notFound: true };
   }
-
   // Fetch the article from the cache
 };
 

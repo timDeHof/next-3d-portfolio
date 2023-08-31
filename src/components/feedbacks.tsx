@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Variants, motion } from 'framer-motion';
 import Image from 'next/image';
 import { fadeIn, textVariant } from '../utils/motion';
 import { testimonials } from '../constants';
@@ -14,7 +14,7 @@ const FeedbackCard = ({
   image,
 }) => (
   <motion.div
-    variants={fadeIn('', 'spring', index * 0.5, 0.75)}
+    variants={fadeIn('', 'spring', index * 0.5, 0.75) as Variants}
     className='w-full rounded-3xl bg-black-200 p-10 xs:w-[320px]'
   >
     <p className='text-[48px] font-black text-white'>&ldquo;</p>

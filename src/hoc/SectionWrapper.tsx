@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles/styles';
-import { staggerContainer } from '../utils/motion';
+import { staggerContainer, StaggerTransition } from '../utils/motion';
 
 export interface SectionWrapperProps {
   [key: string]: string | object;
-  className: string;
+  hidden: object;
+  show: {
+    transition: StaggerTransition;
+  };
 }
 
 const SectionWrapper = (
