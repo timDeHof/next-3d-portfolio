@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { PageTitle } from '@/components';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { getArticleFromCache } from '../api/devto';
 
 const cacheFile = '.dev-to-cache.json';
@@ -50,20 +50,21 @@ const customComponents: CustomComponents = {
 };
 
 const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
-  const [imageWidth, imageHeight] = article.coverImageDimensions
-    .split('x')
-    .map(Number);
+  const imageWidths = [360, 480, 768, 1024, 1280];
+  const imageHeights = [202.5, 270, 432, 576, 720];
+
   return (
     <>
       <Image
         src={article.coverImage}
         alt={`cover image for ${article.title}`}
         title={article.title}
-        width={imageWidth}
-        height={imageHeight}
+        sizes='(max-width: 768px) 100vw'
+        width={500}
+        height={100}
         quality={100}
         layout='responsive'
-        className='xl:h-68 mx-auto h-40 sm:h-48 md:mt-6 md:h-52 lg:mt-10 lg:h-64 xl:mt-14 2xl:h-80'
+        className='mx-auto h-auto w-full'
       />
 
       <PageTitle title={article.title} center icons={false} />
