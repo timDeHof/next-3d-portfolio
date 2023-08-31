@@ -5,14 +5,15 @@ import { styles } from '../styles/styles';
 import { staggerContainer } from '../utils/motion';
 
 interface StarWrapperProps {
+  className: string;
   [key: string]: string;
 }
 
 const StarWrapper = (
   Component: React.ComponentType<StarWrapperProps>,
-  idName: string
+  sectionId: string
 ) => {
-  const HOC = (props: StarWrapperProps) => (
+  const HOC = ({ className, ...props }: StarWrapperProps) => (
     <motion.section
       variants={staggerContainer()}
       initial='hidden'
@@ -20,12 +21,12 @@ const StarWrapper = (
       viewport={{ once: true, amount: 0.25 }}
       className={`${styles.padding} mx-auto flex max-w-7xl flex-col`}
     >
-      <span className='hash-span' id={idName}>
+      <span className='hash-span' id={sectionId}>
         &nbsp;
       </span>
       <div className='relative z-0'>
         <StarsCanvas />
-        <Component {...props} />
+        <Component className={''} {...props} />
       </div>
     </motion.section>
   );

@@ -1,17 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles/styles';
-import { staggerContainer } from '../utils/motion';
+import { staggerContainer, StaggerTransition } from '../utils/motion';
 
-interface SectionWrapperProps {
-  [key: string]: string;
+export interface SectionWrapperProps {
+  [key: string]: string | object;
+  hidden: object;
+  show: {
+    transition: StaggerTransition;
+  };
 }
 
 const SectionWrapper = (
   Component: React.ComponentType<SectionWrapperProps>,
-  idName: string
+  sectionId: string
 ) => {
-  const HOC = (props: SectionWrapperProps) => (
+  const HOC = ({ className, ...props }: SectionWrapperProps) => (
     <motion.section
       variants={staggerContainer()}
       initial='hidden'
@@ -19,10 +23,10 @@ const SectionWrapper = (
       viewport={{ once: true, amount: 0.25 }}
       className={`${styles.padding} mx-auto flex max-w-7xl flex-col`}
     >
-      <span className='hash-span' id={idName}>
+      <span className='hash-span' id={sectionId}>
         &nbsp;
       </span>
-      <Component {...props} />
+      <Component className={''} {...props} />
     </motion.section>
   );
   return HOC;

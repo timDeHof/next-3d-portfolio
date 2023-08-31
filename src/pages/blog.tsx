@@ -13,10 +13,6 @@ import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 import { styles } from '../styles/styles';
 import ArticleProps from '../types/articleType';
 
-interface BlogProps {
-  articles: ArticleProps[];
-}
-
 const BlogPostCard = ({
   title,
   canonical,
@@ -25,7 +21,7 @@ const BlogPostCard = ({
   tags,
   index,
 }) => (
-  <motion.div variants={fadeIn('', 'Spring', index * 0.5, 0.75)}>
+  <motion.div variants={fadeIn('', 'spring', index * 0.5, 0.75)}>
     <Tilt className='w-full rounded-2xl bg-tertiary p-5 sm:w-[360px]'>
       <Link href={`/blog/${convertCanonicalURLToRelative(canonical)}`}>
         <div className='flex h-[230px] w-full'>
@@ -46,7 +42,7 @@ const BlogPostCard = ({
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
           {tags.map((tag) => (
-            <p key={`${title}-${tag}`} className='text-[14px]'>
+            <p key={`${title}-${tag}`} className='text-[14px] text-white-100'>
               #{tag}
             </p>
           ))}
@@ -97,7 +93,7 @@ const Blog = ({ articles }) => (
 export default Blog;
 
 export const getServerSideProps: GetServerSideProps = async (): Promise<
-  GetServerSidePropsResult<{ articles: BlogProps[] }>
+  GetServerSidePropsResult<{ articles: ArticleProps[] }>
 > => {
   let articles = await getAllBlogArticles();
 
