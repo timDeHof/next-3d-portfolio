@@ -7,9 +7,19 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { PageTitle } from '@/components';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { SectionWrapperProps } from '@/hoc/SectionWrapper';
 import { getArticleFromCache } from '../api/devto';
+import { SectionWrapper } from '../../hoc';
 
 const cacheFile = '.dev-to-cache.json';
+
+interface ArticlePageProps extends SectionWrapperProps {
+  article: {
+    coverImage: string;
+    title: string;
+    markdown: string;
+  };
+}
 
 type SupportedLanguage = 'javascript' | 'typescript' | 'python' | 'java';
 
@@ -18,15 +28,6 @@ type CustomComponents = {
   className?: string;
   children?: React.ReactNode;
   code: (props: CodeProps) => JSX.Element;
-};
-
-type ArticlePageProps = {
-  article: {
-    coverImageDimensions: string;
-    coverImage: string;
-    title: string;
-    markdown: string;
-  };
 };
 
 const customComponents: CustomComponents = {
@@ -49,31 +50,31 @@ const customComponents: CustomComponents = {
   },
 };
 
-const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
-  const imageWidths = [360, 480, 768, 1024, 1280];
-  const imageHeights = [202.5, 270, 432, 576, 720];
-
+const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({
+  article,
+}) => {
+  const { coverImage, title, markdown } = article;
   return (
     <>
       <Image
-        src={article.coverImage}
-        alt={`cover image for ${article.title}`}
-        title={article.title}
-        sizes='(max-width: 768px) 100vw'
-        width={500}
-        height={100}
-        quality={100}
-        className='mx-auto h-auto w-full'
+        src={coverImage}
+        alt={`cover image for ${title}`}
+        title={title}
+        sizes='(max-width: 768px) 100vw, 50vw'
+        width={600}
+        height={400}
+        quality={80}
+        className='mx-auto h-auto w-full max-w-3xl'
       />
 
-      <PageTitle title={article.title} center icons={false} />
+      <PageTitle title={title} center icons={false} />
       <article className='mt-10 flex w-full flex-col items-center font-light leading-relaxed'>
         <ReactMarkdown
           skipHtml={false}
           className='prose lg:prose-lg w-full max-w-none text-white md:w-5/6 xl:w-9/12'
           components={customComponents}
         >
-          {article.markdown}
+          {markdown}
         </ReactMarkdown>
       </article>
     </>
@@ -98,4 +99,4 @@ export const getServerSideProps = async ({ params }) => {
   // Fetch the article from the cache
 };
 
-export default ArticlePage;
+export default SectionWrapper(ArticlePage, '');

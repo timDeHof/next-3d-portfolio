@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles/styles';
 import { staggerContainer } from '../utils/motion';
 
-interface SectionWrapperProps {
-  [key: string]: string;
+export interface SectionWrapperProps {
+  [key: string]: string | object;
   className: string;
 }
 
