@@ -27,7 +27,7 @@ const socials = [
 ];
 
 const SocialIcons = () => (
-  <div className='my-6 flex flex-row items-center text-2xl'>
+  <div className='my-6 flex flex-row items-center justify-center text-2xl'>
     {socials.map(({ title, Icon, href, className }, i) => (
       <Link
         key={`${title} icon`}

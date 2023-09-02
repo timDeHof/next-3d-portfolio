@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  reactStrictMode: false,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -11,6 +11,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.hashnode.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.giphy.com',
       },
     ],
   },
