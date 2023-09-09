@@ -2,11 +2,23 @@ import fs from 'fs';
 import Image from 'next/image';
 import path from 'path';
 import React, { FunctionComponent } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {
+  H1,
+  H2,
+  H3,
+  CodeBlock,
+  Ul,
+  Ol,
+  Li,
+  A,
+  Img,
+  P,
+} from '@/components/MDXComponents';
+import matter from 'gray-matter';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXProvider } from '@mdx-js/react';
+import { serialize } from 'next-mdx-remote/serialize';
 import { PageTitle } from '@/components';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { SectionWrapperProps } from '@/hoc/SectionWrapper';
 import { getArticleFromCache } from '../api/devto';
 import { SectionWrapper } from '../../hoc';
@@ -19,39 +31,27 @@ interface ArticlePageProps extends SectionWrapperProps {
     title: string;
     markdown: string;
   };
+  mdxSource: MDXRemoteSerializeResult;
 }
 
-type SupportedLanguage = 'javascript' | 'typescript' | 'python' | 'java';
-
-type CustomComponents = {
-  inline?: boolean;
-  className?: string;
-  children?: React.ReactNode;
-  code: (props: CodeProps) => JSX.Element;
+const components = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  code: CodeBlock,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  a: A,
+  img: Img,
+  p: P,
 };
 
-const customComponents: CustomComponents = {
-  code: ({ inline, className, children, style, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
-
-    return !inline && match ? (
-      <SyntaxHighlighter
-        style={oneDark}
-        PreTag='div'
-        language={match[1] as SupportedLanguage}
-      >
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ) : (
-      <code className={className} {...props}>
-        {children}
-      </code>
-    );
-  },
-};
-
-const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
-  const { coverImage, title, markdown } = article;
+const ArticlePage: FunctionComponent<ArticlePageProps> = ({
+  article,
+  mdxSource,
+}) => {
+  const { coverImage, title } = article;
   return (
     <>
       <Image
@@ -59,6 +59,7 @@ const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
         alt={`cover image for ${title}`}
         title={title}
         sizes='(max-width: 768px) 100vw, 50vw'
+        priority
         width={600}
         height={400}
         quality={80}
@@ -66,14 +67,10 @@ const ArticlePage: FunctionComponent<ArticlePageProps> = ({ article }) => {
       />
 
       <PageTitle title={title} center icons={false} />
-      <article className='mt-10 flex w-full flex-col items-center font-light leading-relaxed'>
-        <ReactMarkdown
-          skipHtml={false}
-          className='prose lg:prose-lg w-full max-w-none text-white md:w-5/6 xl:w-9/12'
-          components={customComponents}
-        >
-          {markdown}
-        </ReactMarkdown>
+      <article className='mt-10 flex w-full flex-col items-center font-light leading-relaxed text-white'>
+        <MDXProvider components={components}>
+          <MDXRemote {...mdxSource} />
+        </MDXProvider>
       </article>
     </>
   );
@@ -88,7 +85,14 @@ export const getServerSideProps = async ({ params }) => {
     );
     const cache = JSON.parse(cacheContents);
     const article = await getArticleFromCache(cache, params.slug);
-    return { props: { article } };
+
+    // Serialize the markdown to MDX
+    const markdownString: string = article.markdown as string;
+
+    const matterResult = matter(markdownString);
+    const mdxSource = await serialize(matterResult.content);
+
+    return { props: { article, mdxSource } };
   } catch (error) {
     console.error('Error reading cache file:', error);
     return { notFound: true };
