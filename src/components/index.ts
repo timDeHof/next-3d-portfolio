@@ -11,6 +11,7 @@ import SocialIcons from './socialIcons';
 import Footer from './footer';
 import PageTitle from './pageTitle';
 import Layout from './layout';
+import Loader from './Loader';
 import ServiceCard from './serviceCard/ServiceCard';
 
 export {
@@ -20,6 +21,7 @@ export {
   Navbar,
   Feedbacks,
   Layout,
+  Loader,
   Tech,
   EarthCanvas,
   BallCanvas,
