@@ -6,11 +6,12 @@ import { styles } from '@/styles/styles';
 import { technologies } from '@/lib/constants';
 import { textVariant } from '@/lib/utils/motion';
 import { TechnologiesCard } from '@/components/TechnologiesCard';
-import SectionWrapper from '@/components/hoc/SectionWrapper';
 
 const TechPage = () => {
   return (
-    <section className='w-full'>
+    <section
+      className={`${styles.padding} mt32 mx-auto flex max-w-7xl flex-col`}
+    >
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           What I work with
@@ -33,4 +34,4 @@ const TechPage = () => {
   );
 };
 
-export default SectionWrapper(TechPage, 'Tech');
+export default TechPage;

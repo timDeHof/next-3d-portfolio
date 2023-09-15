@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ExperienceCard } from '@/components/ExperienceCard';
-import SectionWrapper from '@/components/hoc/SectionWrapper';
 import { experiences } from '@/lib/constants';
 import { textVariant } from '@/lib/utils/motion';
 import { styles } from '@/styles/styles';
@@ -12,7 +11,9 @@ import 'react-vertical-timeline-component/style.min.css';
 
 const ExperiencePage = () => {
   return (
-    <>
+    <section
+      className={`${styles.padding} mt32 mx-auto flex max-w-7xl flex-col`}
+    >
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           What I have done so far
@@ -28,7 +29,7 @@ const ExperiencePage = () => {
           ))}
         </VerticalTimeline>
       </div>
-    </>
+    </section>
   );
 };
-export default SectionWrapper(ExperiencePage, 'Work');
+export default ExperiencePage;

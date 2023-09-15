@@ -4,13 +4,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '@/styles/styles';
 import { fadeIn, textVariant } from '@/lib/utils/motion';
-import SectionWrapper from '@/components/hoc/SectionWrapper';
 import { services } from '@/lib/constants';
 import ServiceCard from '@/components/ServiceCard';
 
 const AboutPage = () => {
   return (
-    <section>
+    <section
+      className={`${styles.padding} mt32 mx-auto flex max-w-7xl flex-col`}
+    >
       <motion.div variants={textVariant()} className='gap-10'>
         <h1 className={`${styles.sectionSubText} text-center `}>
           Introduction
@@ -34,7 +35,7 @@ const AboutPage = () => {
         pursuing a career in web development, and I firmly believe that the
         perfect opportunity, whether local or remote, is just around the corner.
       </motion.p>
-      <div className='my-10 flex flex-wrap gap-10'>
+      <div className='mx-auto my-10 flex flex-wrap gap-10'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
@@ -43,4 +44,4 @@ const AboutPage = () => {
   );
 };
 
-export default SectionWrapper(AboutPage, 'About');
+export default AboutPage;

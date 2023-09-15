@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import { styles } from '@/styles/styles';
-import { EarthCanvas } from '@/components/canvas';
-import { StarWrapper } from '@/components/hoc';
+import { EarthCanvas, StarsCanvas } from '@/components/canvas';
 import { slideIn } from '@/lib/utils/motion';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,7 +33,7 @@ const ContactPage = (): JSX.Element => {
     e.preventDefault();
     setLoading(true);
     try {
-      const result = await emailjs.send(
+      await emailjs.send(
         process.env.EMAILJS_SERVICE_ID!,
         process.env.EMAILJS_TEMPLATE_ID!,
         {
@@ -46,7 +45,7 @@ const ContactPage = (): JSX.Element => {
         },
         process.env.EMAILJS_PUBLIC_KEY!
       );
-      console.log(result);
+
       toast.success('Thank you. I will get back to you as soon as possible.', {
         position: 'bottom-center',
         autoClose: 5000,
@@ -79,7 +78,9 @@ const ContactPage = (): JSX.Element => {
     }
   };
   return (
-    <div className='flex flex-col-reverse gap-10 overflow-hidden xl:mt-12 xl:flex-row'>
+    <div
+      className={`${styles.padding} mx-auto mt-32 flex flex-col-reverse gap-5 overflow-hidden xl:mt-12 xl:flex-row`}
+    >
       <ToastContainer
         position='bottom-center'
         autoClose={5000}
@@ -92,6 +93,7 @@ const ContactPage = (): JSX.Element => {
         pauseOnHover
         theme='colored'
       />
+
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
         className='flex-[0.75] rounded-2xl bg-black-100 p-8'
@@ -151,10 +153,11 @@ const ContactPage = (): JSX.Element => {
         variants={slideIn('right', 'tween', 0.2, 1)}
         className='h-[350px] md:h-[550px] xl:h-auto xl:flex-1'
       >
+        <StarsCanvas />
         <EarthCanvas />
       </motion.div>
     </div>
   );
 };
 
-export default StarWrapper(ContactPage, 'contact');
+export default ContactPage;

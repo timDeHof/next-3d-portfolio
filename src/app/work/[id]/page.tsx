@@ -3,10 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '@/styles/styles';
-import { fadeIn, textVariant, imageVariant } from '@/lib/utils/motion';
+import { textVariant } from '@/lib/utils/motion';
 import Image, { StaticImageData } from 'next/image';
 import { projects } from '@/lib/constants';
-import SectionWrapper from '@/components/hoc/SectionWrapper';
 import { github, link } from '@/lib/assets';
 import Link from 'next/link';
 

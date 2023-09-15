@@ -3,14 +3,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '@/styles/styles';
-import SectionWrapper from '@/components/hoc/SectionWrapper';
 import { projects } from '@/lib/constants';
 import { fadeIn, textVariant } from '@/lib/utils/motion';
 import { ProjectCard } from '@/components/ProjectCard';
 
 const WorksPage = () => {
   return (
-    <>
+    <section
+      className={`${styles.padding} mt32 mx-auto flex max-w-7xl flex-col`}
+    >
       <motion.div variants={textVariant()}>
         <h1 className={`${styles.sectionSubText} text-center`}>My work</h1>
         <h2 className={`${styles.sectionHeadText} text-center`}>Projects.</h2>
@@ -38,7 +39,7 @@ const WorksPage = () => {
           />
         ))}
       </div>
-    </>
+    </section>
   );
 };
-export default SectionWrapper(WorksPage, 'work');
+export default WorksPage;
