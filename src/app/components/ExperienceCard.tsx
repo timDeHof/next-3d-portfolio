@@ -44,7 +44,7 @@ export const ExperienceCard = ({
     <ul className='ml-5 mt-5 list-disc space-y-2'>
       {points.map((point, index) => (
         <li
-          key={`experience-point-${index}`}
+          key={`experience-point-${point.id}`}
           className='trackingwider pl-1 text-[14px] text-white-100'
         >
           {point}
